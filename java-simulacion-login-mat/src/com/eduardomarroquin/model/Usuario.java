@@ -15,7 +15,6 @@ public class Usuario {
     
     //Constructores
     public Usuario(){
-        
     }
 
     public Usuario(String userName, String password, String nombreCompleto, Rol rol) {
@@ -26,7 +25,6 @@ public class Usuario {
     }
    
     //Getters and Setters
-
     public String getUserName() {
         return userName;
     }

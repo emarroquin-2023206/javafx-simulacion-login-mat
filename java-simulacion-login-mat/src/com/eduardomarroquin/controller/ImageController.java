@@ -18,10 +18,10 @@ public class ImageController {
     public Image getImageLogin(String nombreImagen) {
         switch (nombreImagen) {
             case "logo":
-                imagenAMostrar = new Image(RUTA_IMAGENES + "images.jpg");
+                imagenAMostrar = new Image(RUTA_IMAGENES + "hatsune-miku-miku.gif");
                 break;
             default:
-                imagenAMostrar = new Image(RUTA_IMAGENES + "images.jpg");
+                imagenAMostrar = new Image(RUTA_IMAGENES + "hatsune-miku-miku.gif");
         }
         return imagenAMostrar;
     }

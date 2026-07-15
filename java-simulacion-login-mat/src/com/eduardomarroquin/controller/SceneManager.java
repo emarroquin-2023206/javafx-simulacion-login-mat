@@ -57,7 +57,7 @@ public class SceneManager {
             //Metodo que oculta las opciones de ventana por defecto
             this.escenarioPrincipal.initStyle(StageStyle.TRANSPARENT);
             LoginView login = LoginView.getInstanciaLoginView();
-            cambiarEscenaPrincipal(login, 350, 425);
+            cambiarEscenaPrincipal(login, 370, 425);
             this.escenaPrinicpal.setFill(Color.TRANSPARENT);
             new LoginController(login);
         } catch (NullPointerException objetoNulo) {

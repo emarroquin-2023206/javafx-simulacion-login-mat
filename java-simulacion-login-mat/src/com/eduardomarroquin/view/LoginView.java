@@ -38,27 +38,32 @@ public class LoginView extends BorderPane {
     private GridPane formulario;
     private Button btnIniciarSesion;
     private VBox cajaVertical;  
+    private String RUTA_ESTILOS = "/com/eduardomarroquin/styles/";
 
     private LoginView() {
+        this.getStylesheets().add(RUTA_ESTILOS + "LoginStyles.css");
         this.setPadding(new Insets(20));
         this.setBorder(new Border(
-                new BorderStroke(Paint.valueOf("8E27F5"), 
+                new BorderStroke(Paint.valueOf("#39C5BB"), 
                         BorderStrokeStyle.SOLID,
-                        new CornerRadii(25), //estilo de línea 
-                        new BorderWidths(2))
+                        new CornerRadii(24), //estilo de línea 
+                        new BorderWidths(3))
         ));
-        this.setBackground(new Background(new BackgroundFill(Paint.valueOf("#AFC06A"),new CornerRadii(25), Insets.EMPTY)));
+        this.setBackground(new Background(new BackgroundFill(Paint.valueOf("#121212"),new CornerRadii(25), Insets.EMPTY)));
         barraDeVentana = new HBox(20);
         btnCerrarVentana = new Button("X");
         lblTituloVentana = new Label("JAVAFX - MAT - SIMULADOR LOGIN");
+        lblTituloVentana.setTextFill(Paint.valueOf("#FFFFFF"));
         barraDeVentana.getChildren().addAll(btnCerrarVentana, lblTituloVentana);
         this.setTop(barraDeVentana);
         cajaVertical = new VBox(15);
         formulario = new GridPane();
         lblNombreUsuario = new Label("Ingrese su nombre de usuario");
+        lblNombreUsuario.setTextFill(Paint.valueOf("#FFFFFF"));
         txtNombreUsuario = new TextField();
         
         lblClave = new Label("Ingrese su contraseña");
+        lblClave.setTextFill(Paint.valueOf("#FFFFFF"));
         pwdClave = new PasswordField();
         
         formulario.add(lblNombreUsuario,0,0);
@@ -68,10 +73,11 @@ public class LoginView extends BorderPane {
         
         btnIniciarSesion = new Button("Iniciar Sesión");
         
+        
         this.setCenter(cajaVertical);
         imgLogoLogin =  new ImageView(new ImageController().getImageLogin("logo"));
-        imgLogoLogin.setFitHeight(100);
-        imgLogoLogin.setFitWidth(100);
+        imgLogoLogin.setFitHeight(120);
+        imgLogoLogin.setFitWidth(120);
         imgLogoLogin.setCache(true);
         
         cajaVertical.setAlignment(Pos.CENTER);
