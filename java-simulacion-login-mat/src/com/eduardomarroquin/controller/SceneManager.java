@@ -4,6 +4,8 @@
  */
 package com.eduardomarroquin.controller;
 
+import com.eduardomarroquin.model.Usuario;
+import com.eduardomarroquin.view.BienvenidaView;
 import com.eduardomarroquin.view.LoginView;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
@@ -72,6 +74,23 @@ public class SceneManager {
         }
     }
 
+    public void ventanaBienvenida(Usuario usuario) {
+
+        try {
+            BienvenidaView bienvenida = BienvenidaView.getInstanciaBienvenidaView().getInstanciaBienvenidaView();
+            bienvenida.mostrarDatosUsuario(usuario);
+            bienvenida.mostrar(this.escenarioPrincipal);
+        } catch (NullPointerException objetoNulo) {
+
+            JOptionPane.showMessageDialog(null, "Error de objeto nulo: Ventana Bienvenida");
+            objetoNulo.printStackTrace();
+
+        } catch (Exception errorPadre) {
+
+            JOptionPane.showMessageDialog(null, "Error padre: Ventana Bienvenida");
+            errorPadre.printStackTrace();
+        }
+    }
     public static SceneManager getInstanciaSceneManager() {
 
         if (instanciaSceneManager == null) {

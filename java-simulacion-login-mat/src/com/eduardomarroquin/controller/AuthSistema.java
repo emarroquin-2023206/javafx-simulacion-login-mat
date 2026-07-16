@@ -20,6 +20,10 @@ public class AuthSistema {
         Usuario usuarioAdmin = new Usuario("Admin", "Admin", "Admin", Rol.ADMIN);
         Usuario usuarioUser = new Usuario("user", "user", "user", Rol.USER);
         Usuario userYo = new Usuario("Fel", "123", "Eduardo Marroquin", Rol.USER);
+        
+        listaUsuarios.add(usuarioAdmin);
+        listaUsuarios.add(usuarioUser);
+        listaUsuarios.add(userYo);
     }
     public Usuario login(String nombreUsuario, String clave){
         for(Usuario usuarioBuscado :  listaUsuarios)

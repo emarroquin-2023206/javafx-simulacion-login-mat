@@ -6,8 +6,8 @@ package com.eduardomarroquin.controller;
 
 import com.eduardomarroquin.model.Usuario;
 import com.eduardomarroquin.view.LoginView;
+import com.eduardomarroquin.view.MensajeView;
 import javafx.stage.Stage;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -54,26 +54,49 @@ public class LoginController {
         (evento)->{
             iniciarSesion();
         });
+
+       
+        this.LOGIN_VIEW.getTxtNombreUsuario().textProperty().addListener(
+        (observable, valorAnterior, valorNuevo) -> {
+            if (!valorNuevo.trim().isEmpty()) {
+                this.LOGIN_VIEW.getTxtNombreUsuario().getStyleClass().removeAll("empty", "error");
+            }
+        });
+        this.LOGIN_VIEW.getPwdClave().textProperty().addListener(
+        (observable, valorAnterior, valorNuevo) -> {
+            if (!valorNuevo.trim().isEmpty()) {
+                this.LOGIN_VIEW.getPwdClave().getStyleClass().removeAll("empty", "error");
+            }
+        });
     }
     private AuthSistema authSistema = new AuthSistema();
     public void iniciarSesion(){
         String userName = this.LOGIN_VIEW.getTxtNombreUsuario().getText().trim();
         String clave =  this.LOGIN_VIEW.getPwdClave().getText().trim();
         if(userName.isEmpty()){
-            JOptionPane.showMessageDialog(null, "No deje el campo  usuario vacio");
+            mostrarMensaje("No deje el campo usuario vacio");
             this.LOGIN_VIEW.getTxtNombreUsuario().getStyleClass().add("empty");
         }else if (clave.isEmpty()){
             this.LOGIN_VIEW.getTxtNombreUsuario().getStyleClass().remove("empty");
             this.LOGIN_VIEW.getPwdClave().getStyleClass().add("empty");
-            JOptionPane.showMessageDialog(null, "No deje el campo contraseña vacio");
+            mostrarMensaje("No deje el campo contraseña vacio");
             
         }else{
             Usuario usuario = authSistema.login(userName, clave);
-            if(usuario == null)
-                JOptionPane.showMessageDialog(null, "Valide sus credenciales");
+            if(usuario == null){
+                this.LOGIN_VIEW.getTxtNombreUsuario().getStyleClass().add("error");
+                this.LOGIN_VIEW.getPwdClave().getStyleClass().add("error");
+                mostrarMensaje("Valide sus credenciales");
+            }
             else{
-                JOptionPane.showMessageDialog(null, "Oal :D");
+                SceneManager.getInstanciaSceneManager().ventanaBienvenida(usuario);
             }
         }
+    }
+
+    
+    private void mostrarMensaje(String mensaje) {
+        MensajeView mensajeView = new MensajeView(mensaje, true);
+        mensajeView.mostrar(escenario);
     }
 }

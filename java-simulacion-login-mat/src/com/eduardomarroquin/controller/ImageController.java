@@ -20,6 +20,12 @@ public class ImageController {
             case "logo":
                 imagenAMostrar = new Image(RUTA_IMAGENES + "hatsune-miku-miku.gif");
                 break;
+            case "alerta":
+                imagenAMostrar = new Image(RUTA_IMAGENES + "images.jpg");
+                break;
+            case "bienvenida":
+                imagenAMostrar = new Image(RUTA_IMAGENES + "bienvenida-meme.png");
+                break;
             default:
                 imagenAMostrar = new Image(RUTA_IMAGENES + "hatsune-miku-miku.gif");
         }
